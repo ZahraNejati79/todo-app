@@ -1,7 +1,8 @@
 import "./App.css";
+import TodoApp from "./components/TodoApp";
 
 const App = () => {
-  return <div>سلام خدمت</div>;
+  return <TodoApp />;
 };
 
 export default App;
