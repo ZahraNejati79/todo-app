@@ -1,17 +1,21 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AiFillPlusCircle } from "react-icons/ai";
-const TodoForm = ({ addTodoHandler }) => {
+import { RiEdit2Fill } from "react-icons/ri";
+const TodoForm = ({ submitTodo, edit }) => {
   const [todo, setTodo] = useState({
     text: "",
     color: "#9f40dd",
   });
-
+  const inputRef = useRef();
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
   const changeHandler = (e) => {
     setTodo({ ...todo, [e.target.name]: e.target.value });
   };
   const submitHandler = (e) => {
     e.preventDefault();
-    addTodoHandler(todo);
+    submitTodo(todo);
     setTodo({
       text: "",
       color: "#9f40dd",
@@ -26,6 +30,7 @@ const TodoForm = ({ addTodoHandler }) => {
           onChange={changeHandler}
           placeholder="افزودن کار"
           type="text"
+          ref={inputRef}
         />
         <input
           onChange={changeHandler}
@@ -34,7 +39,7 @@ const TodoForm = ({ addTodoHandler }) => {
           type="color"
         />
         <button type="submit">
-          <AiFillPlusCircle />
+          {edit === "edit" ? <RiEdit2Fill /> : <AiFillPlusCircle />}
         </button>
       </form>
     </section>

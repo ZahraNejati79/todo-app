@@ -1,6 +1,6 @@
 import { ImCheckboxUnchecked, ImCheckboxChecked } from "react-icons/im";
 import { RiDeleteBin5Fill, RiEdit2Fill } from "react-icons/ri";
-const Todo = ({ todo, onCompleted, onDelete }) => {
+const Todo = ({ todo, onCompleted, onDelete, onEdit }) => {
   return (
     <div
       dir="rtl"
@@ -20,7 +20,7 @@ const Todo = ({ todo, onCompleted, onDelete }) => {
         <button onClick={onDelete}>
           <RiDeleteBin5Fill />
         </button>
-        <button>
+        <button onClick={onEdit}>
           <RiEdit2Fill />
         </button>
         <div

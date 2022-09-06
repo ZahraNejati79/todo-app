@@ -26,15 +26,24 @@ const TodoApp = () => {
     const updatedTodos = todos.filter((todo) => todo.id !== id);
     setTodos(updatedTodos);
   };
+  const updateHandler = (newTodo, id) => {
+    const indexSelectedTodo = todos.findIndex((todo) => id === todo.id);
+    const updatedTodo = [...todos];
+    const selectedTodo = { ...todos[indexSelectedTodo] };
+    selectedTodo.text = newTodo;
+    updatedTodo[indexSelectedTodo] = selectedTodo;
+    setTodos(updatedTodo);
+  };
   return (
     <div className="container flex flex-col items-center mt-8  h-screen">
       <h1 className=" text-2xl">لیست کارها</h1>
       <div className="flex flex-col items-center justify-center w-full ">
-        <TodoForm addTodoHandler={addTodoHandler} />
+        <TodoForm submitTodo={addTodoHandler} />
         <TodoList
           todos={todos}
           completedHandler={completedHandler}
           deleteHandler={deleteHandler}
+          updateHandler={updateHandler}
         />
       </div>
     </div>
