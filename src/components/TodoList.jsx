@@ -25,7 +25,7 @@ const TodoList = ({
   return (
     <section className=" flex flex-col items-center justify-center w-screen  ">
       {edit.id ? (
-        <TodoForm submitTodo={onEditTodo} edit="edit" />
+        <TodoForm submitTodo={onEditTodo} edit={edit} />
       ) : (
         <>
           <h2>لیست انجام کارها</h2>
