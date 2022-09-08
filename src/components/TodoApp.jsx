@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Layout from "../Layout/Layout";
 import Navigation from "./Navigation";
 import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
@@ -31,24 +32,21 @@ const TodoApp = () => {
     const indexSelectedTodo = todos.findIndex((todo) => id === todo.id);
     const updatedTodo = [...todos];
     const selectedTodo = { ...todos[indexSelectedTodo] };
-    selectedTodo.text = newTodo;
+    selectedTodo.text = newTodo.text;
+    selectedTodo.color = newTodo.color;
     updatedTodo[indexSelectedTodo] = selectedTodo;
     setTodos(updatedTodo);
   };
   return (
-    <div className="container flex flex-col items-center mt-8  h-screen">
-      <div className="flex flex-col items-center justify-center w-full ">
-        <Navigation>
-          <TodoForm submitTodo={addTodoHandler} />
-          <TodoList
-            todos={todos}
-            completedHandler={completedHandler}
-            deleteHandler={deleteHandler}
-            updateHandler={updateHandler}
-          />
-        </Navigation>
-      </div>
-    </div>
+    <Layout>
+      <TodoForm submitTodo={addTodoHandler} />
+      <TodoList
+        todos={todos}
+        completedHandler={completedHandler}
+        deleteHandler={deleteHandler}
+        updateHandler={updateHandler}
+      />
+    </Layout>
   );
 };
 

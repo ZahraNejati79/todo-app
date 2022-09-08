@@ -1,6 +1,6 @@
 import { BsCalendarCheckFill } from "react-icons/bs";
 import { FaListUl } from "react-icons/fa";
-const Navigation = ({ children }) => {
+const Navigation = () => {
   return (
     <header className="fixed top-0 w-screen shadow-lg bg-white h-16 container">
       <div className="flex w-full h-full items-center justify-center">
@@ -17,9 +17,6 @@ const Navigation = ({ children }) => {
           </div>
         </nav>
       </div>
-      <main className=" flex items-center justify-center">
-        <div>{children}</div>
-      </main>
     </header>
   );
 };

@@ -35,10 +35,11 @@ const TodoForm = ({ submitTodo, edit, setEdit }) => {
   };
   const submitHandler = (e) => {
     e.preventDefault();
+    console.log(todo, "edit");
     submitTodo(todo);
     setTodo({
       text: "",
-      color: "#9f40dd",
+      color: "",
     });
   };
   return (
@@ -98,12 +99,14 @@ const TodoForm = ({ submitTodo, edit, setEdit }) => {
           </div>
         </section>
       ) : (
-        <button
-          className="text-purple-800 text-8xl fixed bottom-0 right-0"
-          onClick={() => setShowForm(true)}
-        >
-          <IoMdAddCircle />
-        </button>
+        <div>
+          <button
+            className="text-purple-800 text-8xl  fixed bottom-0 right-0 "
+            onClick={() => setShowForm(true)}
+          >
+            <IoMdAddCircle />
+          </button>
+        </div>
       )}
     </div>
   );

@@ -2,12 +2,12 @@ import { ImCheckboxUnchecked, ImCheckboxChecked } from "react-icons/im";
 import { RiDeleteBin5Fill, RiEdit2Fill } from "react-icons/ri";
 const Todo = ({ todo, onCompleted, onDelete, onEdit }) => {
   const { color } = todo;
-  const textColor = "text-[" + color + "]";
-  console.log(textColor);
+
   return (
     <div
       dir="rtl"
-      className={`py-8 px-4  text-right w-1/2 flex justify-between items-center rounded-3xl ${textColor}`}
+      style={{ "border-color": color }}
+      className="py-6 px-2 border-l-8 bg-white shadow-lg border-gray-200 text-gray-600 text-right flex justify-between items-center min-w-[20rem] md:min-w-[30rem] rounded-3xl w-full md:max-w-4xl "
       key={todo.id}
     >
       <div className="flex items-center justify-center gap-x-4">
@@ -28,7 +28,7 @@ const Todo = ({ todo, onCompleted, onDelete, onEdit }) => {
         </button>
         <div
           className={`py-4 ${
-            todo.isCompleted ? "line-through text-gray-400" : ""
+            todo.isCompleted ? "line-through text-gray-300" : ""
           }`}
         >
           {todo.text}

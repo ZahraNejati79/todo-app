@@ -14,7 +14,7 @@ const TodoList = ({
     isCompleted: false,
   });
   const onEditTodo = (todo) => {
-    const newTodo = todo.text;
+    const newTodo = { text: todo.text, color: todo.color };
     updateHandler(newTodo, edit.id);
     setEdit({
       id: null,
@@ -23,14 +23,14 @@ const TodoList = ({
     });
   };
   return (
-    <section className=" flex flex-col items-center justify-center w-screen  ">
+    <section className=" flex flex-col items-center justify-center w-screen ">
       {edit.id ? (
         <TodoForm submitTodo={onEditTodo} edit={edit} setEdit={setEdit} />
       ) : (
         <>
-          <div className=" p-4 flex flex-col gap-y-4 items-center justify-center w-full ">
+          <div className=" pt-4  flex flex-col gap-y-4 items-center justify-center w-full ">
             {todos.map((todo) => (
-              <div className={`text-["${todo.color}"]`}>
+              <div className="flex  items-center justify-center">
                 <Todo
                   key={todo.id}
                   onCompleted={() => completedHandler(todo.id)}
