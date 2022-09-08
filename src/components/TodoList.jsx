@@ -25,19 +25,20 @@ const TodoList = ({
   return (
     <section className=" flex flex-col items-center justify-center w-screen  ">
       {edit.id ? (
-        <TodoForm submitTodo={onEditTodo} edit={edit} />
+        <TodoForm submitTodo={onEditTodo} edit={edit} setEdit={setEdit} />
       ) : (
         <>
-          <h2>لیست انجام کارها</h2>
-          <div className=" p-4 flex flex-col text-purple-800 gap-y-4 items-center justify-center w-full ">
+          <div className=" p-4 flex flex-col gap-y-4 items-center justify-center w-full ">
             {todos.map((todo) => (
-              <Todo
-                key={todo.id}
-                onCompleted={() => completedHandler(todo.id)}
-                onDelete={() => deleteHandler(todo.id)}
-                onEdit={() => setEdit(todo)}
-                todo={todo}
-              />
+              <div className={`text-["${todo.color}"]`}>
+                <Todo
+                  key={todo.id}
+                  onCompleted={() => completedHandler(todo.id)}
+                  onDelete={() => deleteHandler(todo.id)}
+                  onEdit={() => setEdit(todo)}
+                  todo={todo}
+                />
+              </div>
             ))}
           </div>
         </>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Navigation from "./Navigation";
 import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
 
@@ -36,15 +37,16 @@ const TodoApp = () => {
   };
   return (
     <div className="container flex flex-col items-center mt-8  h-screen">
-      <h1 className=" text-2xl">لیست کارها</h1>
       <div className="flex flex-col items-center justify-center w-full ">
-        <TodoForm submitTodo={addTodoHandler} />
-        <TodoList
-          todos={todos}
-          completedHandler={completedHandler}
-          deleteHandler={deleteHandler}
-          updateHandler={updateHandler}
-        />
+        <Navigation>
+          <TodoForm submitTodo={addTodoHandler} />
+          <TodoList
+            todos={todos}
+            completedHandler={completedHandler}
+            deleteHandler={deleteHandler}
+            updateHandler={updateHandler}
+          />
+        </Navigation>
       </div>
     </div>
   );

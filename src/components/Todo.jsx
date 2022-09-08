@@ -1,10 +1,13 @@
 import { ImCheckboxUnchecked, ImCheckboxChecked } from "react-icons/im";
 import { RiDeleteBin5Fill, RiEdit2Fill } from "react-icons/ri";
 const Todo = ({ todo, onCompleted, onDelete, onEdit }) => {
+  const { color } = todo;
+  const textColor = "text-[" + color + "]";
+  console.log(textColor);
   return (
     <div
       dir="rtl"
-      className="  py-8 px-4  text-right w-1/2 flex justify-between items-center rounded-3xl "
+      className={`py-8 px-4  text-right w-1/2 flex justify-between items-center rounded-3xl ${textColor}`}
       key={todo.id}
     >
       <div className="flex items-center justify-center gap-x-4">

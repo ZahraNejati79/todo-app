@@ -2,8 +2,8 @@ import Circle from "@uiw/react-color-circle";
 import { useEffect, useRef, useState } from "react";
 import { IoMdAddCircle } from "react-icons/io";
 import { AiOutlineClose } from "react-icons/ai";
-const TodoForm = ({ submitTodo, edit }) => {
-  const [showForm, setShowForm] = useState(false);
+const TodoForm = ({ submitTodo, edit, setEdit }) => {
+  const [showForm, setShowForm] = useState(edit ? true : false);
   const [hex, setHex] = useState("#F44E3B");
   const [todo, setTodo] = useState(
     edit
@@ -19,6 +19,11 @@ const TodoForm = ({ submitTodo, edit }) => {
   const closeHandler = (e) => {
     if (e.target.id === "container") {
       setShowForm(false);
+      setEdit({
+        id: null,
+        text: "",
+        isCompleted: false,
+      });
     }
   };
   const inputRef = useRef();
@@ -47,7 +52,14 @@ const TodoForm = ({ submitTodo, edit }) => {
           <div className=" bg-gray-50 p-4 flex flex-col items-center justify-center ">
             <div className="w-full text-left border-b-2 pb-2 mb-4 border-gray-300">
               <span
-                onClick={() => setShowForm(false)}
+                onClick={() => {
+                  setShowForm(false);
+                  setEdit({
+                    id: null,
+                    text: "",
+                    isCompleted: false,
+                  });
+                }}
                 className="cursor-pointer"
               >
                 <AiOutlineClose />
