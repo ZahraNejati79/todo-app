@@ -24,6 +24,7 @@ const CompletedPage = ({
       <Layout>
         <TodoForm submitTodo={submitTodo} />
         <TodoList
+          route="completed"
           todos={completedTodos}
           completedHandler={completedHandler}
           deleteHandler={deleteHandler}
