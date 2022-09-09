@@ -35,7 +35,6 @@ const TodoForm = ({ submitTodo, edit, setEdit }) => {
   };
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(todo, "edit");
     submitTodo(todo);
     setTodo({
       text: "",

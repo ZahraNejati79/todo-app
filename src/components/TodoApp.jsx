@@ -1,5 +1,8 @@
 import { useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "../Layout/Layout";
+import CompletedPage from "../Pages/CompletedPage";
+import HomePage from "../Pages/HomePage";
 import Navigation from "./Navigation";
 import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
@@ -38,16 +41,44 @@ const TodoApp = () => {
     setTodos(updatedTodo);
   };
   return (
-    <Layout>
-      <TodoForm submitTodo={addTodoHandler} />
-      <TodoList
-        todos={todos}
-        completedHandler={completedHandler}
-        deleteHandler={deleteHandler}
-        updateHandler={updateHandler}
-      />
-    </Layout>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <HomePage
+              todos={todos}
+              completedHandler={completedHandler}
+              deleteHandler={deleteHandler}
+              updateHandler={updateHandler}
+              submitTodo={addTodoHandler}
+            />
+          }
+        />
+        <Route
+          path="/complited"
+          element={
+            <CompletedPage
+              todos={todos}
+              completedHandler={completedHandler}
+              deleteHandler={deleteHandler}
+              updateHandler={updateHandler}
+              submitTodo={addTodoHandler}
+            />
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
+  // <Layout>
+  //     <TodoForm submitTodo={addTodoHandler} />
+  //     <TodoList
+  // todos = { todos };
+  // completedHandler = { completedHandler };
+  // deleteHandler = { deleteHandler };
+  // updateHandler = { updateHandler };
+  //     />
+  //   </Layout>
 };
 
 export default TodoApp;
